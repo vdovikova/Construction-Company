@@ -22,8 +22,8 @@ public class ConstructionCompany {
     @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @Column(name = "surename", nullable = false, length = 45)
-    private String surename;
+    @Column(name = "surname", nullable = false, length = 45)
+    private String surname;
 
     @OneToMany(mappedBy = "com")
     private Set<Building> buildings = new LinkedHashSet<>();
@@ -36,12 +36,12 @@ public class ConstructionCompany {
         this.buildings = buildings;
     }
 
-    public String getSurename() {
-        return surename;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurename(String surename) {
-        this.surename = surename;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getName() {
