@@ -13,6 +13,18 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Client client;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "flat_id")
+    private Flat flat;
+
+    public Flat getFlat() {
+        return flat;
+    }
+
+    public void setFlat(Flat flat) {
+        this.flat = flat;
+    }
+
     public Client getCustomer() {
         return client;
     }

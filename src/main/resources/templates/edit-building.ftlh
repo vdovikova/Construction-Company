@@ -13,6 +13,9 @@
     top: 50%;
     left: 50%;
     margin-right: -50%;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
    }
   </style>
 </head>
@@ -74,16 +77,19 @@
     </div>
 </header>
 <div class="layer">
-    <h1 text-align="center" class="H+18w" data-e2e-id="seo-title">Изменить здание</h1>
-    <form method="post">
+    <h1 data-e2e-id="seo-title">Изменить здание</h1>
+</div>
+<div class="container">
+    <form action="/building/edit/{id}" method="post">
         Название: <input type="text" name="name" value="${building.name}"/><br><br>
         Район: <input type="text" name="district" value="${building.district}"/><br><br>
         Улица: <input type="text" name="street" value="${building.street}"/><br><br>
         Дом: <input type="text" name="houseNum" value="${building.houseNum}"/><br><br>
+        Количество этажей: <input type="number" name="levels" value="${building.levels}"/><br><br>
         Начало строительства: <input type="date" name="startDate" value="${building.startDate}"/><br><br>
         Конец строительства: <input type="date" name="endDate" value="${building.endDate}"/><br><br>
         Ввод в эксплуатацию: <input type="date" name="useDate" value="${building.useDate}"/><br><br>
-        Назначить менеджера: <input type="number" name="com" value="${building.com_id}"/><br><br>
+        Назначить менеджера: <input type="number" name="com" value="${building.com}"/><br><br>
         <button type="submit">Сохранить изменения</button>
     </form>
 </div>

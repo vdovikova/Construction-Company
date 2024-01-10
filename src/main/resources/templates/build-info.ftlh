@@ -13,6 +13,9 @@
     top: 50%;
     left: 50%;
     margin-right: -50%;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
    }
   </style>
 </head>
@@ -73,21 +76,38 @@
         </div>
     </div>
 </header>
-<div><p><b><a href="/building/edit/${building.id}" style="color:dimgrey;
-                        text-decoration:none;">Изменить здание</a></b></p></div>
-<div style="layer">
-    <h4>Подробнее о здании</h4>
-    <b>Адрес </b><hr>
-    <b>Район: </b>${building.district}<hr>
-    <b>Улица: </b>${building.street}<hr>
-    <b>Дом: </b>${building.houseNum}<hr>
-    <b>Начало строительства: </b>${building.startDate}<hr>
-    <b>Конец строительства: </b>${building.endDate}<hr>
-    <b>Ввод в эксплуатацию: </b>${building.useDate}<hr>
-    <b>Менеджер на проекте: </b>${building.useDate}<hr>
+<div class="layer">
+    <h1 data-e2e-id="seo-title">Подробнее о здании</h1>
+    <p><b><a href="/building/edit/${building.id}" style="color:dimgrey;
+                        text-decoration:none;">Изменить здание</a></b></p>
+    <p><b><a href="/building/add-flat" style="color:dimgrey;
+                        text-decoration:none;">Добавить квартиру</a></b></p><hr>
 </div>
-<form action="/building/delete/${building.id}" method="post">
-    <input type="submit" value="Удалить здание"/>
-</form>
+<div class="container">
+    <h4>Адрес </h4><hr>
+    <b>Район: </b>${building.district}<br>
+    <b>Улица: </b>${building.street}<br>
+    <b>Дом: </b>${building.houseNum}<br>
+    <b>Количество этажей: </b>${building.levels}<br>
+    <b>Начало строительства: </b>${building.startDate}<br>
+    <b>Конец строительства: </b>${building.endDate}<br>
+    <b>Ввод в эксплуатацию: </b>${building.useDate}<br>
+    <b>Менеджер на проекте: </b>${building.com.name} ${building.com.surname} (ID = ${building.com.id})<br>
+    <hr>
+</div>
+<div class="container">
+    <h4>Квартиры в этом здании</h4><hr>
+    <#list building.flats as flat>
+    <div><p><b><a href="/${building.id}/${flat.id}" style="color:dimgrey; text-decoration:none;">${flat.num}</a></b></p></div>
+    <#else>Квартир нет
+    </#list>
+    <br>
+    <hr>
+</div>
+<div class="container">
+    <form action="/building/delete/${building.id}" method="post">
+        <input type="submit" value="Удалить здание"/>
+    </form>
+</div>
 </body>
 </html>

@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <title>Construction Company</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <style>
-   .layer {
-    padding: 5px; /* Поля вокруг текста */
-    padding-right: 90px; /* Поле справа */
-    text-align: justify; /* Выравнивание по ширине */
-   }
-  </style>
+    .layer {
+    padding: center;
+    padding-left: 90px;
+    padding-right: 90px;
+    text-align: justify;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    }
 </head>
 <body>
 <header>
@@ -26,7 +31,7 @@
 
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
-                        <a href="/" class="nav-link text-white">
+                        <a href="/" class="nav-link text-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-buildings" viewBox="0 0 16 16">
                                 <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022ZM6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z"/>
                                 <path d="M2 11h1v1H2zm2 0h1v1H4zm-2 2h1v1H2zm2 0h1v1H4zm4-4h1v1H8zm2 0h1v1h-1zm-2 2h1v1H8zm2 0h1v1h-1zm2-2h1v1h-1zm0 2h1v1h-1zM8 7h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zM8 5h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1z"/>
@@ -47,7 +52,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/orders" class="nav-link text-secondary">
+                        <a href="/orders" class="nav-link text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                             </svg>
@@ -70,6 +75,16 @@
     </div>
 </header>
 <div class="layer">
-
+    <h1 text-align="center" class="H+18w" data-e2e-id="seo-title">Все новостройки</h1>
+    <br>
+</div>
+<div class="container">
+    <#list orders as order>
+    <div><p><b><a href="/order/${order.id}" style="color:dimgrey;
+                        text-decoration:none;">${order.id} ${order.client.name}
+        ${order.flat.building.name}, ${order.flat.num}</a></b></p></div>
+    <#else>Заказов нет
+</#list>
 </div>
 </body>
+</html>

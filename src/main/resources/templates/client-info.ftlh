@@ -73,10 +73,16 @@
         </div>
     </div>
 </header>
+<div><p><b><a href="/client/edit/${client.id}" style="color:dimgrey;
+                        text-decoration:none;">Изменить информацию о клиенте</a></b></p></div>
 <div style="layer" text-align="center">
     <h4>Подробнее о клиенте</h4>
     <b>ID: </b>${client.id}<hr>
     <b>Имя и Фамилия: </b>${client.name}<hr>
+    <b>Номер телефона: </b>${client.telNum}<hr>
 </div>
+<form action="/client/delete/${client.id}" method="post">
+    <input type="submit" value="Удалить клиента"/>
+</form>
 </body>
 </html>

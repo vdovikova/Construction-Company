@@ -16,9 +16,12 @@ public class BuildingService {
 
     private final BuildingRepository buildingRepository;
 
-    public List<Building> listBuildings(String district) {
-        if (district != null) buildingRepository.findByDistrict(district);
-        return buildingRepository.findAll();
+    public List<Building> listBuildings(String name) {
+        if (name != null) {
+            return buildingRepository.findByName(name);
+        } else {
+            return buildingRepository.findAll();
+        }
     }
 
     public void saveBuilding (Building building){
@@ -28,7 +31,6 @@ public class BuildingService {
 
     public void editBuilding (Building building, Integer id){
         buildingRepository.deleteById(id);
-        building.setId(id);
         buildingRepository.save(building);
     }
 

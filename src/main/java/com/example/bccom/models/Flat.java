@@ -3,6 +3,8 @@ package com.example.bccom.models;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "flats")
@@ -10,9 +12,10 @@ public class Flat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "flat_id", nullable = false)
-    private Integer id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "building_id")
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "building_id", nullable = false)
     private Building building;
 
     @Column(name = "total_area", nullable = false, precision = 10)
@@ -35,6 +38,28 @@ public class Flat {
 
     @Column(name = "status")
     private Integer status;
+
+    @Column(name = "num", nullable = false, length = 45)
+    private String num;
+
+    @OneToMany(mappedBy = "flat")
+    private Set<Order> orders = new LinkedHashSet<>();
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
 
     public Integer getStatus() {
         return status;
@@ -100,12 +125,11 @@ public class Flat {
         this.building = building;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
 }

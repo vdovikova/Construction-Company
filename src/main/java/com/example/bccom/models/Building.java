@@ -1,10 +1,15 @@
 package com.example.bccom.models;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "buildings")
+@Table(name = "buildings", indexes = {
+        @Index(name = "com_id_idx", columnList = "com_id")
+})
 public class Building {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +43,28 @@ public class Building {
 
     @Column(name = "name", nullable = false, length = 45)
     private String name;
+
+    @Column(name = "levels", nullable = false)
+    private Integer levels;
+
+    @OneToMany(mappedBy = "building")
+    private Set<Flat> flats = new LinkedHashSet<>();
+
+    public Set<Flat> getFlats() {
+        return flats;
+    }
+
+    public void setFlats(Set<Flat> flats) {
+        this.flats = flats;
+    }
+
+    public Integer getLevels() {
+        return levels;
+    }
+
+    public void setLevels(Integer levels) {
+        this.levels = levels;
+    }
 
     public String getName() {
         return name;

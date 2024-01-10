@@ -13,6 +13,9 @@
     top: 50%;
     left: 50%;
     margin-right: -50%;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
    }
   </style>
 </head>
@@ -74,12 +77,15 @@
     </div>
 </header>
 <div class="layer">
-    <h1 text-align="center" class="H+18w" data-e2e-id="seo-title">Новое здание</h1>
+    <h1 data-e2e-id="seo-title">Новое здание</h1><br>
+</div>
+<div class="container">
     <form action="/building/add" method="post">
         Название: <input type="text" name="name"/><br><br>
         Район: <input type="text" name="district"/><br><br>
         Улица: <input type="text" name="street"/><br><br>
         Дом: <input type="text" name="houseNum"/><br><br>
+        Количество этажей: <input type="number" name="levels"/><br><br>
         Начало строительства: <input type="date" name="startDate"/><br><br>
         Конец строительства: <input type="date" name="endDate"/><br><br>
         Ввод в эксплуатацию: <input type="date" name="useDate"/><br><br>
