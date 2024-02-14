@@ -77,24 +77,24 @@
     </div>
 </header>
 <div class="layer">
-    <h1 data-e2e-id="seo-title">Добавить квартиру</h1>
+    <h1 data-e2e-id="seo-title">Изменить информацию о квартире</h1>
 </div>
-<div>
-    <form method="post">
-        Дом: <input type="number" name="building" value="${flat.building.id}" disabled="disabled"/><br><br>
-        Номер: <input type="text" name="num"/><br><br>
-        Общая площадь: <input type="number" min="0" name="totalArea"/><br><br>
-        Жилая площадь: <input type="number" min="0" name="livingArea"/><br><br>
-        Количество комнат: <input type="number" min="0" name="rooms"/><br><br>
-        Этаж: <input type="number" name="levels"/><br><br>
-        Подъезд: <input type="number" name="entrance"/><br><br>
-        Цена: <input type="number" min="0" name="cost"/><br><br>
-        Состояние продажи: <select name="select" size="3" multiple>
-        <option selected value="0">Свободна</option>
-        <option value="1">Зарезервирована</option>
-        <option value="2">Продана</option>
+<div class="container">
+    <form action="/flat/edit/${flat.id}" method="post">
+    Дом: <input type="number" name="building" value="${flat.building.id}" disabled="disabled"/><br><br>
+    Номер: <input type="text" name="num" value="${flat.num}"/><br><br>
+    Общая площадь: <input type="number" min="0" name="totalArea" value="${flat.totalArea}"/><br><br>
+    Жилая площадь: <input type="number" min="0" name="livingArea" value="${flat.livingArea}"/><br><br>
+    Количество комнат: <input type="number" min="0" name="rooms" value="${flat.rooms}"/><br><br>
+    Этаж: <input type="number" name="levels" value="${flat.level}"/><br><br>
+    Подъезд: <input type="number" name="entrance" value="${flat.entrance}"/><br><br>
+    Цена: <input type="number" min="0" name="cost" value="${flat.cost}"/><br><br>
+    Состояние продажи: <select name="select" size="3" multiple>
+    <option selected value="0">Свободна</option>
+    <option value="1">Зарезервирована</option>
+    <option value="2">Продана</option>
     </select>
-        <button type="submit">Добавить квартиру</button>
+    <button type="submit">Сохранить изменения</button>
     </form>
 </div>
 </body>

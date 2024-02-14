@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.SQLException;
+
 @Controller
 @RequiredArgsConstructor
 @ComponentScan({"com.example.bccom.controllers", "com.example.bccom.models", "com.example.bccom.services",
@@ -47,7 +49,7 @@ public class AppController implements ErrorController {
     }
 
     @PostMapping("/building/add")
-    public String addBuilding(Building building){
+    public String addBuilding(Building building) throws SQLException {
         buildingService.saveBuilding(building);
         return "redirect:/add-building";
     }
@@ -70,10 +72,10 @@ public class AppController implements ErrorController {
         return "add-flat";
     }
 
-    @PostMapping("/building/addflat")
+    @PostMapping("/building/add-flat")
     public String saveFlat(Flat flat){
         flatService.saveFlat(flat);
-        return "redirect:/building/${building.id}";
+        return "redirect:/building/{id}";
     }
 
     @PostMapping("/building/delete/{id}")
@@ -82,17 +84,30 @@ public class AppController implements ErrorController {
         return "redirect:/";
     }
 
-    @GetMapping("/${building.id}/${flat.id}")
-    public String flat(@PathVariable Long id, Model model){
+    @GetMapping("/flats/{id}")
+    public String flat(@PathVariable Integer id, Model model){
         model.addAttribute("flat",flatService.getFlatById(id));
         return "flat-info";
     }
 
-//    @GetMapping("/building/{id}")
-//    public String buildingInfo(@PathVariable Integer id, Model model){
-//        model.addAttribute("building", buildingService.getBuildingById(id));
-//        return "build-info";
-//    }
+    @GetMapping("/flats/edit/{id}")
+    public String editFlat(@PathVariable Integer id, Model model){
+        model.addAttribute("flat", flatService.getFlatById(id));
+        return "edit-flat";
+    }
+
+    @PostMapping("/flats/edit/{id}")
+    public String updateFlat(Flat flat){
+        flatService.editFlat(flat, flat.getId());
+        return "redirect:/";
+    }
+
+    @GetMapping("/flats/delete/{id}")
+    public String deleteFlat(@PathVariable Integer id){
+        Integer bid = flatService.getFlatById(id).getBuilding().getId();
+        flatService.deleteFlat(id);
+        return "redirect:/building/${bid}";
+    }
 
     @GetMapping("/clients")
     public String clients(@RequestParam(name = "name", required = false) String name, Model model){
@@ -101,7 +116,7 @@ public class AppController implements ErrorController {
     }
 
     @GetMapping("/client/{id}")
-    public String clientInfo(@PathVariable Long id, Model model){
+    public String clientInfo(@PathVariable Integer id, Model model){
         model.addAttribute("client", clientService.getClientById(id));
         return "client-info";
     }
@@ -118,7 +133,7 @@ public class AppController implements ErrorController {
     }
 
     @GetMapping("/client/edit/{id}")
-    public String editClient(@PathVariable Long id, Model model){
+    public String editClient(@PathVariable Integer id, Model model){
         model.addAttribute("client", clientService.getClientById(id));
         return "edit-client";
     }
@@ -130,7 +145,7 @@ public class AppController implements ErrorController {
     }
 
     @PostMapping("/client/delete/{id}")
-    public String deleteClient(@PathVariable Long id) {
+    public String deleteClient(@PathVariable Integer id) {
         clientService.deleteClient(id);
         return "redirect:/clients";
     }

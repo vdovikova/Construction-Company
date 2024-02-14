@@ -75,7 +75,7 @@
     </div>
 </header>
 <div class="layer">
-    <h1 text-align="center" class="H+18w" data-e2e-id="seo-title">Все новостройки</h1>
+    <h1 text-align="center" class="H+18w" data-e2e-id="seo-title">Все заказы</h1>
     <br>
 </div>
 <div class="container">

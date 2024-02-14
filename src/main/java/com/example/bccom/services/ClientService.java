@@ -28,16 +28,16 @@ public class ClientService {
         clientRepository.save(client);
     }
 
-    public void editClient (Client client, Long id){
+    public void editClient (Client client, Integer id){
         clientRepository.deleteById(id);
         clientRepository.save(client);
     }
 
-    public void deleteClient (Long id){
+    public void deleteClient (Integer id){
         clientRepository.deleteById(id);
     }
 
-    public Client getClientById (Long id){
+    public Client getClientById (Integer id){
         return clientRepository.findById(id).orElse(null);
     }
 

@@ -98,7 +98,7 @@
 <div class="container">
     <h4>Квартиры в этом здании</h4><hr>
     <#list building.flats as flat>
-    <div><p><b><a href="/${building.id}/${flat.id}" style="color:dimgrey; text-decoration:none;">${flat.num}</a></b></p></div>
+    <div><p><b><a href="/flats/${flat.id}" style="color:dimgrey; text-decoration:none;">${flat.num}</a></b></p></div>
     <#else>Квартир нет
     </#list>
     <br>

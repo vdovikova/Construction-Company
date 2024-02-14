@@ -2,6 +2,7 @@ package com.example.bccom.models;
 
 import jakarta.persistence.*;
 
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -25,8 +26,8 @@ public class Building {
     @Column(name = "use_date")
     private LocalDate useDate;
 
-    @Column(name = "floor_plan")
-    private byte[] floorPlan;
+    @Transient
+    private Image floorPlan;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "com_id")
@@ -106,11 +107,11 @@ public class Building {
         this.com = com;
     }
 
-    public byte[] getFloorPlan() {
+    public Image getFloorPlan() {
         return floorPlan;
     }
 
-    public void setFloorPlan(byte[] floorPlan) {
+    public void setFloorPlan(Image floorPlan) {
         this.floorPlan = floorPlan;
     }
 

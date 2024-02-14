@@ -26,12 +26,16 @@ public class FlatService {
         flatRepository.save(flat);
     }
 
-    public void deleteFlat (Long id){
+    public void deleteFlat (Integer id){
         flatRepository.deleteById(id);
     }
 
-    public Flat getFlatById (Long id){
+    public Flat getFlatById (Integer id){
         return flatRepository.findById(id).orElse(null);
     }
 
+    public void editFlat(Flat flat, Integer id) {
+        flatRepository.deleteById(id);
+        flatRepository.save(flat);
+    }
 }

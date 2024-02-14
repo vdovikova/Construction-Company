@@ -78,7 +78,7 @@
 </header>
 <div class="layer">
     <h1 data-e2e-id="seo-title">Подробнее о квартире ${flat.num}</h1>
-    <p><b><a href="/${building.id}/${flat.id}/edit" style="color:dimgrey;
+    <p><b><a href="/flats/edit/${flat.id}" style="color:dimgrey;
                         text-decoration:none;">Изменить данные о квартире</a></b></p>
 </div>
 <div class="container">
@@ -92,7 +92,7 @@
     <hr>
 </div>
 <div class="container">
-    <form action="/${building.id}/${flat.id}/delete" method="post">
+    <form action="/flats/delete/${flat.id}" method="post">
         <input type="submit" value="Удалить квартиру"/>
     </form>
 </div>

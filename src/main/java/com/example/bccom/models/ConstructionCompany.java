@@ -25,6 +25,9 @@ public class ConstructionCompany {
     @Column(name = "surname", nullable = false, length = 45)
     private String surname;
 
+    @Column(name = "active", nullable = false)
+    private boolean active;
+
     @OneToMany(mappedBy = "com")
     private Set<Building> buildings = new LinkedHashSet<>();
 

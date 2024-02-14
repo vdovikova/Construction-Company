@@ -99,8 +99,8 @@
         <#list buildings as building>
         <tr >
             <td>${building.id}</td>
-            <td><a href="/building/${building.id}" style="color:black;
-                        text-decoration:none;">${building.name}</a></td>
+            <td><b><a href="/building/${building.id}" style="color:black;
+                        text-decoration:none;">${building.name}</a></b></td>
             <td>${building.district}</td>
             <td>${building.street}</td>
             <td>${building.houseNum}</td>

@@ -80,7 +80,7 @@
     <h1 data-e2e-id="seo-title">Изменить здание</h1>
 </div>
 <div class="container">
-    <form action="/building/edit/{id}" method="post">
+    <form action="/building/edit/${building.id}" method="post">
         Название: <input type="text" name="name" value="${building.name}"/><br><br>
         Район: <input type="text" name="district" value="${building.district}"/><br><br>
         Улица: <input type="text" name="street" value="${building.street}"/><br><br>
