@@ -150,7 +150,7 @@ public class AppController implements ErrorController {
         return "redirect:/clients";
     }
 
-    @GetMapping("/orders")
+    @GetMapping("/{login}/orders")
     public String orders(@RequestParam(name = "id", required = false) Integer id, Model model){
         model.addAttribute("orders", orderService.listOrders(id));
         return "orders";

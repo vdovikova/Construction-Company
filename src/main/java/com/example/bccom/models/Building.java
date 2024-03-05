@@ -1,12 +1,14 @@
 package com.example.bccom.models;
 
-import jakarta.persistence.*;
+import lombok.RequiredArgsConstructor;
 
+import javax.persistence.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@RequiredArgsConstructor
 @Entity
 @Table(name = "buildings", indexes = {
         @Index(name = "com_id_idx", columnList = "com_id")
@@ -31,7 +33,7 @@ public class Building {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "com_id")
-    private ConstructionCompany com;
+    private User com;
 
     @Column(name = "district", nullable = false, length = 45)
     private String district;
@@ -99,11 +101,11 @@ public class Building {
         this.district = district;
     }
 
-    public ConstructionCompany getCom() {
+    public User getCom() {
         return com;
     }
 
-    public void setCom(ConstructionCompany com) {
+    public void setCom(User com) {
         this.com = com;
     }
 

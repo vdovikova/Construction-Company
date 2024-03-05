@@ -1,7 +1,6 @@
 package com.example.bccom.models;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 

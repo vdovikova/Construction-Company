@@ -1,10 +1,10 @@
 package com.example.bccom.models;
 
 import com.example.bccom.models.enums.Role;
-import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -15,7 +15,7 @@ import java.util.Set;
         @Index(name = "com_pass_UNIQUE", columnList = "com_pass"),
         @Index(name = "com_login_UNIQUE", columnList = "com_login", unique = true)
 })
-public class ConstructionCompany implements UserDetails {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "com_id", nullable = false)
@@ -76,10 +76,6 @@ public class ConstructionCompany implements UserDetails {
         this.name = name;
     }
 
-    public String getComPass() {
-        return comPass;
-    }
-
     public void setComPass(String comPass) {
         this.comPass = comPass;
     }
@@ -99,6 +95,8 @@ public class ConstructionCompany implements UserDetails {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public Set<Role> getRoles() { return this.roles;}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities(){
