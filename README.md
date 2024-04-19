@@ -10,4 +10,6 @@
 - Связывать клиента и квартиру в новостройке, создавая и изменяя заказ.
 # Документация
 - [ER-диаграмма](https://github.com/vdovikova/Construction-Company/blob/main/ER-%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D0%91%D0%B0%D0%B7%D1%8B%20%D0%94%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.drawio)
-
+# Инструменты
+- Java Spring
+- MySQL
